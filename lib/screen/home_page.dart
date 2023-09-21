@@ -1,27 +1,8 @@
 import 'package:disney_plus/widget/distributor_button.dart';
-import 'package:disney_plus/widget/movie_poster.dart';
+import 'package:disney_plus/widget/movie_content.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-
-final List<String> imgList = [
-  'asset/img/hangang_poster.jpeg',
-  'asset/img/moving_poster.jpeg',
-  'asset/img/elemental_poster.jpeg',
-];
-
-final List<String> recentMovieList = [
-  'asset/img/elemental.jpg',
-  'asset/img/mermaid.jpeg',
-  'asset/img/moving.jpg',
-  'asset/img/asoka.png'
-];
-
-final List<String> recommentdList = [
-  'asset/img/guardians3.jpeg',
-  'asset/img/elemental.jpg',
-  'asset/img/endgame.jpeg',
-  'asset/img/moving.jpg'
-];
+import 'package:disney_plus/movie_list.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -134,63 +115,3 @@ class HomePage extends StatelessWidget {
     );
   }
 }
-
-// 영화 포스터
-class Poster extends StatefulWidget {
-  const Poster({Key? key, required this.movieList}) : super(key: key);
-  final List<String> movieList;
-
-  @override
-  State<Poster> createState() => _PosterState();
-}
-
-class _PosterState extends State<Poster> {
-  @override
-  Widget build(BuildContext context) {
-    return ListView.separated(
-      shrinkWrap: true,
-      scrollDirection: Axis.horizontal,
-      itemCount: widget.movieList.length,
-      itemBuilder: (context, i) {
-        return MoviePoster(imagePath: widget.movieList[i]);
-      },
-      separatorBuilder: (context, i) => SizedBox(width: 3,),
-    );
-  }
-}
-
-class MovieContent extends StatelessWidget {
-  const MovieContent({Key? key, required this.width, required this.movieList, required this.category}) : super(key: key);
-  final double width;
-  final String category;
-  final List<String> movieList;
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Padding(
-          padding: const EdgeInsets.only(left: 7),
-          child: Text(
-            category,
-            style: TextStyle(
-                color: Colors.white,
-                fontSize: 15,
-                fontWeight: FontWeight.w900
-            ),
-          ),
-        ),
-        SizedBox(height: 5,),
-        Container(
-          child: Poster(movieList: movieList),
-          height: 200,
-        ),
-        SizedBox(height: 20,)
-      ],
-    );
-  }
-}
-
-
-
