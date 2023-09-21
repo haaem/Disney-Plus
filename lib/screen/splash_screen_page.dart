@@ -4,6 +4,8 @@ import 'package:disney_plus/screen/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
+import 'bottom_navigation_bar.dart';
+
 class SplashScreen extends StatelessWidget {
   const SplashScreen({Key? key}) : super(key: key);
 
@@ -23,7 +25,7 @@ class SplashScreen extends StatelessWidget {
             ),
           ),
         ),
-        nextScreen: HomePage(),
+        nextScreen: BottomNavigation(),
         splashTransition: SplashTransition.fadeTransition,
         pageTransitionType: PageTransitionType.fade,
         duration: 3000,
