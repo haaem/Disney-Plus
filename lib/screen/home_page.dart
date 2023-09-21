@@ -1,3 +1,4 @@
+import 'package:disney_plus/widget/distributor_button.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
@@ -35,7 +36,16 @@ class HomePage extends StatelessWidget {
               SizedBox(
                 height: 8,
               ),
-              _HomeCarouselSlider(width, height)
+              _HomeCarouselSlider(width, height),
+              SizedBox(height: 30,),
+              Padding(
+                  padding: EdgeInsets.symmetric(horizontal: width*0.05),
+                child: Column(
+                  children: [
+                    _Distributor(width)
+                  ],
+                ),
+              )
             ],
           ),
         ),
@@ -54,7 +64,7 @@ class HomePage extends StatelessWidget {
         items: imgList.map((e) {
           return Builder(builder: (BuildContext context) {
             return ClipRRect(
-              borderRadius: BorderRadius.circular(3),
+              borderRadius: BorderRadius.circular(4),
               child: Image.asset(
               e,
               fit: BoxFit.fitWidth,
@@ -63,5 +73,29 @@ class HomePage extends StatelessWidget {
             );
           });
         }).toList());
+  }
+
+  Widget _Distributor(double width) {
+    return Column(
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            DistributorButton(imagePath: 'asset/img/disney_white_logo.png', size: width*1.05,),
+            DistributorButton(imagePath: 'asset/img/pixar_logo.png', size: width*1.3,),
+            DistributorButton(imagePath: 'asset/img/marvel_logo.png', size: width,)
+          ],
+        ),
+        SizedBox(height: 7,),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            DistributorButton(imagePath: 'asset/img/starwars_logo.png', size: width,),
+            DistributorButton(imagePath: 'asset/img/ng_logo.png', size: width*1.8,),
+            DistributorButton(imagePath: 'asset/img/star_logo.png', size: width,)
+          ],
+        ),
+      ],
+    );
   }
 }
