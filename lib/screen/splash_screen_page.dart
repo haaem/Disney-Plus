@@ -1,4 +1,5 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:disney_plus/screen/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
@@ -18,12 +19,13 @@ class SplashScreen extends StatelessWidget {
             minHeight: height * 0.35,
             maxHeight: height * 0.35,
             child: Lottie.asset(
-              'asset/lottie/disneychanged.json',
+              'asset/lottie/disney_animated.json',
             ),
           ),
         ),
         nextScreen: HomePage(),
         splashTransition: SplashTransition.fadeTransition,
+        pageTransitionType: PageTransitionType.fade,
         duration: 3000,
         backgroundColor: Color(0xff131a4a),
       ),
